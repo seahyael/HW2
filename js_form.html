@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function check(){
+            let f = document.form1;
+
+            let title = f.title;
+            if(title.value == ''){
+                alert('제목입력해!');
+                title.focus();
+                return false;
+            }
+
+            let uname = f.uname;
+            if(uname.value.length < 2){
+                alert('이름입력해!');
+                title.focus();
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="form1" onsubmit="return false">
+        제목: <input type = "text" name="title"><br>
+        이름: <input type = "text" name="uname"><br>
+        내용: <textarea cols ="20" rows ="5" name="contents"></textarea><br>
+        <input type = "submit" value="저장">
+    </form>
+</body>
+</html>
