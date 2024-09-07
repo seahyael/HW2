@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서</title>
+
+    <style>
+        .blue{
+            background-color: blue;
+            color: white;
+            border-style: none;
+        }
+
+        .green{
+            background-color: green;
+            color: white;
+            border-style: none;
+        }
+
+        .lightblue{
+            background-color: rgb(210, 237, 246);
+            border-radius: 3px;
+            border-color: rgb(202, 202, 202);
+        }
+    </style>
+
+    <script>
+        function plus(){
+            let input = document.getElementById('input');
+            let words = input.value.split(",");
+            let list = document.getElementById('list');
+
+            for (let i = 0; i < words.length; i++) {
+                let li = document.createElement('li');
+                li.textContent = words[i];
+                list.appendChild(li);
+            }
+
+            input.value = "";
+        }
+
+        function minus(){
+            document.getElementById('list').innerHTML = ""; // 목록 전체 삭제
+        }
+    </script>
+</head>
+<body>
+    <h1>Dynamic Wed page</h1>
+
+    <input class="lightblue" type="text" id="input" title="input"/>
+    <button class="blue" onclick="plus()" title="plus">추가</button>
+    <button class="green" onclick="minus()" title="minus">삭제</button>
+
+    <ul id="list">
+
+    </ul>
+</body>
+</html>

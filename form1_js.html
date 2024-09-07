@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function check() {
+            let f = document.form1;
+
+            let fname = f.funame;
+            if (fname.value == '') {
+                alert('Name can\'t be blank');
+                event.preventDefault();
+                return false;
+            }
+
+            let lname = f.luname;
+            if (lname.value == '') {
+                alert('Name can\'t be blank');
+                event.preventDefault();
+                return false;
+            }
+
+            if (confirm("저장하시겠습니까?")) {
+                console.log("Saved");
+            } else {
+                event.preventDefault();
+                return false;
+            }
+
+            return true;
+        }
+
+        function showTooltip(event) {
+            const tooltip = document.createElement('span');
+            tooltip.textContent = '*은 필수항목임';
+            tooltip.style.position = 'absolute';
+            tooltip.style.backgroundColor = '#f3f0d2';
+            tooltip.style.color = '#FC8884';
+            tooltip.style.blockSize = '13px';
+            tooltip.style.fontSize = '13px';
+            tooltip.style.borderRadius = '5px';
+            tooltip.style.zIndex = '1000';
+
+            document.body.appendChild(tooltip);
+
+            const rect = event.target.getBoundingClientRect();
+            tooltip.style.left = rect.left + window.scrollX + 'px';
+            tooltip.style.top = rect.bottom + window.scrollY + 'px';
+
+            event.target.onmouseleave = function() {
+                document.body.removeChild(tooltip);
+            };
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f4e9dd;
+            color: #FC8884;
+        }
+
+        input,
+        textarea,
+        select {
+            background-color: #f3f0d2;
+            color: rgb(212, 146, 32);
+            border-color: beige;
+            border-radius: 9px;
+        }
+
+        input:focus {
+            border-color: #FC8884;
+        }
+
+        .container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .mini {
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .nopadding{
+            margin: 0px;
+            padding: 0px;
+            margin-bottom: -20px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="form2.html" name="form1" onsubmit="return check(event)">
+
+        <div class="container">
+            First name<p name = "star" onmouseover="showTooltip(event)">*</p><br> <input type="text" name="funame" /> <br />
+
+            Last name<p name = "star" onmouseover="showTooltip(event)">*</p><br> <input type="text" name="luname" /> <br />
+        </div>
+
+        Username<p name = "star" onmouseover="showTooltip(event)" class="nopadding">*</p><br> <span class="email address">@</span><input type="text" placeholder="username" /> <br />
+
+        Date of birth : <br><input type="date" name="birth" /> <br />
+
+        Address <br><textarea rows="5" cols="30" placeholder="1234 Main St"></textarea><br>
+
+        <div class="container">
+            Contry<br> <select>
+                <option>Choose...</option>
+                <option>United States</option>
+            </select><br />
+
+            State <br><select>
+                <option>Choose...</option>
+                <option>California</option>
+            </select><br />
+        </div>
+
+        Zip <br><input type="text" name="zip" /><br>
+
+        <input type="checkbox" name="same address" /> Shipping address is the same as my biling address<br />
+        <input type="checkbox" name="save information" /> Save this information for next time<br />
+
+        Payment<br>
+        <input type="radio" name="credit"> Credit card<br>
+        <input type="radio" name="debit"> Debit card<br>
+        <input type="radio" name="pay"> PayPal<br>
+
+        Name on card<br><input type="text" name="card name">
+        <p class="mini">Full name as displayed on card</p>
+
+        Credit card number<br><input type="text" name="card number"><br>
+
+        Expiration<br><input type="text" name="type"><br>
+
+        CVV<br><input type="text" name="cvv"><br><br>
+
+        <input type="submit" value="Continue to checkout">
+    </form>
+</body>
+
+</html>
